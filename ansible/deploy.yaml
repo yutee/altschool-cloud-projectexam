@@ -1,0 +1,30 @@
+---
+
+- name: Copy and execute a bash script on host servers
+  hosts: all
+  become: true
+
+  vars_files:
+    - vars/vars.yaml
+
+  tasks:
+    - name: Copy bash script
+      copy:
+        src: /home/vagrant/scripts/deploy_lamp_app.sh
+        dest: /tmp/your_script.sh
+        mode: 0755
+
+    - name: Execute bash script
+      shell: /tmp/your_script.sh "{{ github_repo }}"
+
+- name: Create Cronjob to check server uptime
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Check uptime
+      cron:
+        name: "check_server_uptime"
+        minute: "0"
+        hour: "0"
+        job: "/usr/bin/uptime >> /var/log/uptime.log"
