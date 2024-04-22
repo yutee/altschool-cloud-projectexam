@@ -4,7 +4,7 @@ A LAMP stack is an open-source bundle of four different software technologies us
 
 Developers use it to build web applications mostly because it is cost effective, has great support and it is easy to maintain. This is where we come in as Cloud/Devops engineers, figuring out how to take this web applications from development to deployment and monitoring it to ensure it is always available to our users.
 
-In this documentation, I hope to walk through the steps I took to deploy and monitor the default Laravel PHP app. These steps cover using a bash script to get an app from github repository, setting it up on a server and using Ansible to provision another server to deploy same application. This bash script is reuseable with other Laravel applications of the same stack.
+In this documentation, I will walk through the steps I took to deploy and monitor the default Laravel PHP app. These steps cover using a bash script to clone an app from a github repository, setting it up on a server and using Ansible to provision another server to deploy same application. This bash script is reuseable with other Laravel applications of the same stack.
 
 The whole process will be divided into __3__ steps:
 
@@ -18,7 +18,7 @@ The whole process will be divided into __3__ steps:
 >
 
 #### 1. Setting up Ubuntu vagrant machines 
-Vagrant helps in building virtual software development environments. It works with a virtual machine software and genrally helps to setup workable enviroments quickly and with less hassle.
+Vagrant helps in creating virtual software development environments. It works with a virtual machine software and genrally helps to setup workable enviroments quickly and with less hassle.
 
 Below is the Vagrantfile configurations I used to provision two Ubuntu servers. Master and Slave.  
 
@@ -35,10 +35,10 @@ I had two Ubuntu machines up and running and I successfully logged into them via
 The master has an ip address of ___172.16.249.138___
 The slave has an ip address of ___172.16.249.139___
 
-I now have two Ubuntu machines (Master & Slave) provisioned by Vagrant up and running.  
+I now have two Ubuntu machines (Master & Slave) up and running, provisioned by Vagrant.  
 
 #### 2. Creating a Bash Script to automate commands to configure and deploy a LAMP stack application
-Bash scripts are used to automate tasks that run on the server. In this case, the tasks and commands which will deploy the Php app will be automated using a reuseable Bash script.
+Bash scripts are used to automate tasks. At the most basic level, it is a collection of commands that can be run on the the terminal. In this case, the tasks and commands which will deploy the Php app will be automated using a reuseable Bash script.
 
 On the master node, a file will be created in...
 
@@ -50,7 +50,7 @@ The script handles the installation and configuration of tools and dependencies 
 >
 > ![bashscript](./screenshots/bashscript.png)
 
-You can find the [script here](./deploy_lamp_app.sh)
+You can find the [script here](./deploy_lamp_app.sh).
 It is clear and concise, but I will go through the major parts of what the script does.
 
 - __Updates server and it's repository__
@@ -112,7 +112,9 @@ _application availability on the browser via the ip address __172.16.249.139__ a
 
 ![after](./screenshots/after.png)
 
-Successfully automated the process of deploying a LAMP stack application using Ansible and a reuseable bash script.
+Successfully automated the process of deploying a LAMP stack application (default Laravel app) using Ansible and a reuseable bash script.
+
+All any other user has to do is to edit the variable file and add a custom github repo.
 
 
 
