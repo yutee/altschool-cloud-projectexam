@@ -68,7 +68,7 @@ Ansible is a tool that automates the configuration, management and deployment of
 
 For the next part of the project, ansible will be used to execute bashscript on a server remotely. The goal is to host the laravel app using by copying the bashscript from the master node to the slave node and running it there. All this will be done from the master node with the help of ansible. 
 
-Link to the complete [project](./ansible/) and [playbook](./ansible/deploy.yaml)
+Link to the [playbook](deploy.yaml)
 
 The execution was acheived with these steps...
 
@@ -84,6 +84,9 @@ __Step 3:__ Create project directory and files on master node
 ![tree](./screenshots/tree.png)
 
 __Step 4:__ Edit inventory hosts file and the ansible configuration file
+_final file strcutre and content_
+
+![files](./screenshots/files.png)
 
 __Step 5:__ Confirm master and slave nodes are communicating properly using the ansible ping command...
 
@@ -98,13 +101,20 @@ __Step 7:__ State of the server before running playbook
 
 __Step 8:__ Run the playbook
 _command to run the playbook_
+
 ![command](./screenshots/runcommand.png)
 
 _playbook run successful_
+
 ![sucess](./screenshots/playbooksuccess.png)
 
-_application availability on the browser via the ip address 172.16.249.139 after playbook has been run_
+_application availability on the browser via the ip address __172.16.249.139__ after playbook has been run_ 
+
 ![after](./screenshots/after.png)
+
+Successfully automated the process of deploying a LAMP stack application using Ansible and a reuseable bash script.
+
+
 
 
 
